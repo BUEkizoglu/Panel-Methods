@@ -1,4 +1,4 @@
-# 2D Potential Flow Solver: Vortex & Source Panel Method for NACA 4-digit series foils
+# 2D Potential Flow Solver: Vortex & Source Panel Method solver for built-in NACA 4-digit series foils and arbitrary user defined bodies.
 
 **Authors:** Bora Ugurcan Ekizoglu, Kurt Spiteri  
 **Language:** Julia (Pluto.jl)  
@@ -20,9 +20,9 @@ The tool utilizes inviscid potential flow theory, allowing users to seamlessly t
 ---
 
 ## ✨ Key Features
-* **Interactive Geometry Generation:** Sliders to dynamically manipulate the number of panels ($N$), chord length, thickness, camber, and angle of attack for any NACA 4-digit foil.
+* **Interactive Geometry Generation:** Sliders to dynamically manipulate the number of panels ($N$), chord length, thickness, camber, and angle of attack for any NACA 4-digit foil. The solver can also handle user defined arbitrary body functions.
 * **Dual Singularity Solver:** Fully interchangeable between purely Source (thickness modeling) and purely Vortex (lifting modeling) mathematical Green's functions.
-* **Kutta Condition Enforcement:** Explicit matrix augmentation to enforce the trailing edge stagnation point, allowing the mathematical generation of physical circulation and lift.
+* **Kutta Condition Enforcement:** Explicit matrix augmentation to enforce the trailing edge stagnation point, allowing the mathematical generation of physical circulation and lift. The panel $x$ and $y$ coordinate arrays should start and end at the trailing to be able to enforce the Kutta condition on the correct panels. 
 * **Aerodynamic Post-Processing:** Automated integration of the continuous pressure field (via Bernoulli's Equation) to calculate integrated lift and numerical drag, alongside theoretical Kutta-Joukowski checks.
 * **Flow Visualization:** Superposition of the freestream and panel-induced velocity grids to map continuous Velocity Magnitude ($V$), directional vectors ($U_x$, $U_y$), and Pressure Coefficient ($C_p$) contours.
 
