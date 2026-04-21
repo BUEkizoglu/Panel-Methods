@@ -73,6 +73,32 @@ As the panel resolution ($N$) increases, the solver demonstrates textbook spatia
 
 ---
 
+## 🏗️ Custom Geometries & Arbitrary Bodies
+
+While this tool includes a built-in NACA 4-digit generator, the core solver is entirely geometry-agnostic. You can compute the flow around **any arbitrary body** by simply feeding 1D arrays of $x$ and $y$ panel endpoint coordinates into the `solve()` function.
+
+For example, to simulate flow around a custom circular body, you can define a simple coordinate generator:
+
+```julia
+# 1. Define a custom geometry function
+function circle(N, R=1.0)
+    # N panels require N+1 node points to close the loop
+    theta = range(-π, π, length=N+1)
+    x = R .* cos.(theta)
+    y = R .* sin.(theta)
+    return x, y
+end
+
+# 2. Generate the coordinates for 32 panels
+x_circ, y_circ = circle(32, 0.5)
+
+# 3. Feed the coordinate arrays directly into the solver!
+U_free = (1.0, 0.0)
+q_circ = solve(x_circ, y_circ, U_free; G=source, loopdir=:CCW)
+```
+
+---
+
 ## 🚀 How to Use
 
 This project is built as a reactive **Pluto.jl** notebook. 
