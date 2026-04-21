@@ -44,7 +44,7 @@ The potential induced at a point $(x,y)$ by a singularity situated at $(x_s, y_s
 ### The Matrix System
 By evaluating the influence of every panel on every other panel's collocation point (the midpoint), we assemble an aerodynamic influence matrix $[A]$ and an excitation vector $[B]$ (the freestream boundary condition). 
 
-$$1 [A][\Lambda] = [B]$$
+$$[A][\Lambda] = [B]$$
 
 ### The Kutta Condition
 To prevent infinite velocities around the sharp trailing edge, the system is modified to physically lock the trailing-edge stagnation point. We sacrifice the final matrix equation and replace it with the Kutta Condition, enforcing zero net vorticity at the trailing edge:
